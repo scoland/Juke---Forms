@@ -1,12 +1,11 @@
 'use strict';
 
-juke.controller('SidebarCtrl', function ($scope, $rootScope) {
+juke.controller('SidebarCtrl', function ($scope,PlaylistFactory) {
 
-  $scope.viewAlbums = function () {
-    $rootScope.$broadcast('viewSwap', { name: 'allAlbums'});
-  };
+ PlaylistFactory.fetchAll()
+ .then(function(res){
+ 	$scope.playlists = res;
+ })
 
-  $scope.viewAllArtists = function () {
-    $rootScope.$broadcast('viewSwap', { name: 'allArtists' });
-  };
+
 });
