@@ -23,5 +23,23 @@
     </tbody>
   </table>
   <small ng-hide="playlist.songs.length">No songs.</small>
+
+  <form class="form-horizontal" name="addSongsToPlaylist">
+    <fieldset>
+        <legend>Add to Playlist</legend>
+        <div class="form-group">
+            <label class="col-xs-2 control-label">Song</label>
+            <div class="col-xs-10">
+            <select ng-options="song as song.name for song in allSongs" ng-model="selectedSong"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-10 col-xs-offset-2">
+                <button type="submit" class="btn btn-success" ng-click="addSongToPlaylist(playlist, selectedSong)">Add Song</button>
+            </div>
+        </div>
+    </fieldset>
+  </form>
+
   <hr>
 </div>

@@ -33,10 +33,11 @@ module.exports = function(schema) {
       .populate('songs')
       .execPopulate() //needed to get a promise
       .then(function(songListDoc) {
-        console.log(songListDoc)
         return songListDoc.songs
           // pluck out each songs artist array
-          .map( song => song.artists )
+          .map( function(song) {
+            return song.artists
+          } )
           // at this point the array is like this
           // -> [[artistId, artistId], [artistId], [artistId]]
           // flatten & concat them all together
