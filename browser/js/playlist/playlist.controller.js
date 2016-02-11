@@ -17,7 +17,11 @@ juke.controller('PlaylistCtrl', function ($scope, $log, PlaylistFactory,$statePa
 		.catch($log);
 
 
-	$scope.addSongToPlaylist = PlaylistFactory.addSongToPlaylist;
+	$scope.addSongToPlaylist = function(playlist,song){
+		PlaylistFactory.addSongToPlaylist(playlist,song);
+	    $scope.selectedSong = null;
+    }
+
 
 	PlaylistFactory.fetchById($stateParams.id)
 	.then(function(response){
